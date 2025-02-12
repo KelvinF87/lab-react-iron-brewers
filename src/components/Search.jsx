@@ -1,5 +1,12 @@
-function Search() {
-  return (
+import { useState } from "react";
+
+function Search({ onSearch }) {
+  const [filterBeers, setFilterBeers] = useState("");
+	const handleFilterBeers = (e) => {
+    setFilterBeers(e.target.value);
+    onSearch(e.target.value); 
+  };
+	return (
     <div className="d-inline-flex justify-content-center align-items-center w-100 p-4">
       <div className="input-group mb-2 w-50">
         <div className="input-group-prepend">
@@ -10,6 +17,8 @@ function Search() {
         <input
           type="text"
           className="form-control search-bar"
+          onChange={handleFilterBeers}
+          value={filterBeers}
         />
       </div>
     </div>
